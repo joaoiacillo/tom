@@ -165,7 +165,7 @@ def command_up(args, rest):
   if project_name:
     project_path = os.path.join(PROJECTS_DIR, project_name)
     if os.path.exists(project_path):
-      subprocess.run(['docker', 'compose', 'up', f'{project_path}/docker-compose.yml', *rest[1:]])
+      subprocess.run(['docker', 'compose', '-f', f'{project_path}/docker-compose.yml', 'up', *rest[1:]])
     else:
       print(f'project \'{project_name}\' does not exist')
   else:
@@ -189,7 +189,7 @@ def command_down(args, rest):
   if project_name:
     project_path = os.path.join(PROJECTS_DIR, project_name)
     if os.path.exists(project_path):
-      subprocess.run(['docker', 'compose', 'down', f'{project_path}/docker-compose.yml', *rest[1:]])
+      subprocess.run(['docker', 'compose', '-f', f'{project_path}/docker-compose.yml', 'down', *rest[1:]])
     else:
       print(f'project \'{project_name}\' does not exist')
   else:
